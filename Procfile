@@ -1,1 +1,1 @@
-web: uvicorn myapi:app --port $PORT --reload
+web: uvicorn myapi:app --port=${PORT:-5000} --reload
