@@ -1,3 +1,1 @@
 fastapi
-service
-starlette
