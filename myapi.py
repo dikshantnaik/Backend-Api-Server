@@ -1,30 +1,53 @@
-from typing import Optional
 from fastapi import FastAPI
-from starlette.responses import RedirectResponse
-
-app = FastAPI()
-item = {
-    1:{
-        "item_name":"Khana",
-        "item_prize":100,
-        "item_disc":"TASYYYY"
+import starlette.responses as _responses
+user = {
+    0: {
+        "username":"dik",
+        "password":"pass"
     },
-    2:{
-        "item_name":"Pina",
-        "item_prize":1344,
-        "item_discL":"Need"
+     1: {
+        "username":"dik2",
+        "password":"pass2"
     }
 }
+i = 0
 
+app = FastAPI()
 
 @app.get("/")
-async def root():
-    res = RedirectResponse(url='/docs')
-    return res
-@app.get("/item/{item_id}")
-def read_item(item_id: int ,q :Optional[str] = None):
-    res = item[item_id]
-    if q=="Hello":
-        res="ha Hello,bol"
+def index():
+    return _responses.RedirectResponse("/redoc")
+
+@app.get("/register")
+def register(user_id:int ,username: str,password:str):
+    user[user_id] = {"username" : username ,"password":password}
+    return "<h1>Register Succes for user " + username + "</h1>"
+
+@app.get("/login")
+def login(username:str,input_password:str):
+    i = 0
+    for i in range(user.__len__()):
+        print(i)
+        print(user[i])
+        if(user[i]["username"]==username):
+            if(user[i]["password"]==input_password):
+                return "Loged In"
+            else:
+                return "Wrong Password Stupid !"
         
-    return res;
+            
+@app.get("/get_pass")
+def get_pass(username:str):
+    for i in range(user.__len__()):
+        if(username == user[i]["username"]):
+            return user[i]["password"]
+    
+    # return "Somthing is Fishy!lol"
+
+@app.get('/check_user')
+def check():
+    return user;
+    
+
+        
+    
