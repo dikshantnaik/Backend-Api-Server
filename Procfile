@@ -1,1 +1,2 @@
-web: uvicorn myapi:app --port 8080 --reload
+web: gunicorn -w 4 -k uvicorn.workers.uvicornWorker myapi:app
+
