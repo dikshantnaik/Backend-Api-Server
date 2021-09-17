@@ -1,6 +1,6 @@
 from typing import Optional
 from fastapi import FastAPI
-
+print("Starting ")
 app = FastAPI()
 
 @app.get("/")
