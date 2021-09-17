@@ -1,1 +1,1 @@
-web: uvicorn myapi:app --port 8080
+web: uvicorn myapi:app --port 8080 --reload
