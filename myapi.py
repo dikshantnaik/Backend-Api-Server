@@ -1,39 +1,44 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Response
+from fastapi.responses import JSONResponse
+from starlette.requests import Request
 import starlette.responses as _responses
-user = {
-    0: {
-        "username":"dik",
-        "password":"pass"
-    },
-     1: {
-        "username":"dik2",
-        "password":"pass2"
-    }
-}
-i = 0
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+origins = ["*"]
+user = {}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def index():
-    return _responses.RedirectResponse("/redoc")
+    return _responses.RedirectResponse("/docs")
 
-@app.get("/register")
-def register(user_id:int ,username: str,password:str):
-    user[user_id] = {"username" : username ,"password":password}
-    return "<h1>Register Succes for user " + username + "</h1>"
+@app.post("/signup")
+async def register(request:Request):
+    data  = await request.json()
+    print(data["username"])
+    res = {"req":"true"}
+    return JSONResponse(content=res)
 
-@app.get("/login")
-def login(username:str,input_password:str):
-    i = 0
-    for i in range(user.__len__()):
-        print(i)
-        print(user[i])
-        if(user[i]["username"]==username):
-            if(user[i]["password"]==input_password):
-                return "Loged In"
-            else:
-                return "Wrong Password Stupid !"
+@app.post("/login")
+async def login(req:Request):
+    data = await req.json()
+    print(data["username"])
+    # i = 0
+    # for i in range(user.__len__()):
+    #     print(i)
+    #     print(user[i])
+    #     if(user[i]["username"]==username):
+    #         if(user[i]["password"]==input_password):
+    #             return "Loged In"
+    #         else:
+    #             return "Wrong Password Stupid !"
         
             
 @app.get("/get_pass")
