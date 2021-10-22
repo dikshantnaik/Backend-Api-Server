@@ -2,3 +2,8 @@ flask
 mongoengine
 gunicorn
 uvicorn
+flask_restful
+flask_cors
+functools
+datetime
+jwt
