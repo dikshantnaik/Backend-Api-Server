@@ -7,7 +7,7 @@ from flask.wrappers import Request
 from flask_restful import Resource,Api,reqparse
 from flask_cors import CORS, cross_origin
 from flask import request
-from views import *
+from .views import *
 import jwt
 app = Flask(__name__)
 cors = CORS(app)
@@ -101,6 +101,3 @@ api.add_resource(Login,'/login')
 api.add_resource(Register,'/register')
 api.add_resource(availCourse,"/course")
 api.add_resource(check_users,"/users")
-
-if __name__ == '__main__':
-    app.run(debug=True,port=5001)

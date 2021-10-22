@@ -1,4 +1,4 @@
-from db_schem import *
+from .db_schem import *
 
 def register(input_name,input_pass,email):
     try:
