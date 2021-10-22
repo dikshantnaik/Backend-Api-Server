@@ -1,3 +1,0 @@
-guvicorn
-flask
-mongoengine
