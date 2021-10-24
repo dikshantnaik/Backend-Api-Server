@@ -6,4 +6,3 @@ flask_restful
 flask_cors
 datetime
 dnspython
-pyjwt
