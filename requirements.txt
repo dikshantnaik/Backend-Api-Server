@@ -5,5 +5,5 @@ uvicorn
 flask_restful
 flask_cors
 datetime
-jwt
 dnspython
+pyjwt

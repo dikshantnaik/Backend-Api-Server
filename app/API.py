@@ -10,6 +10,7 @@ from flask import request
 from .views import *
 from jwt import ExpiredSignatureError
 import jwt
+
 app = Flask(__name__)
 cors = CORS(app)
 
