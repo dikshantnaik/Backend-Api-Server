@@ -8,6 +8,7 @@ from flask_restful import Resource,Api,reqparse
 from flask_cors import CORS, cross_origin
 from flask import request
 from .views import *
+from jwt import ExpiredSignatureError
 import jwt
 app = Flask(__name__)
 cors = CORS(app)
@@ -24,7 +25,7 @@ def genrate_token(username):
         },app.config["SECRET_KEY"])
         return token.decode('utf-8')
 
-    except jwt.ExpiredSignatureError:
+    except ExpiredSignatureError:
         return {"error":"Token Expired"}
     except Exception as e:
         return {"error":str(e)}

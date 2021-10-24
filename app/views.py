@@ -18,16 +18,16 @@ def check_student():
         data[x.user_name]={'password':x.password,'email':x.email}
     return data
 def login(input_user,input_pass):
-    resp = ""
+    resp = "No user"
     for x in Users.objects:
+       
         if x.user_name==input_user:
+
             if x.password==input_pass:
                 resp=  "Logged-in"
             else:
                 resp = "Wrong pass"
-                
-        else:
-            resp = "No user"
+
     return resp;
 def add_aval_course():
     cname = input("Course name ; ")
