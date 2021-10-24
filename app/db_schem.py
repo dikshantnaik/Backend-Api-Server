@@ -4,7 +4,7 @@ from mongoengine import Document
 import mongoengine
 from mongoengine.fields import DateField, IntField, ListField, ReferenceField, SequenceField, StringField
 x= mongoengine.connect(host='mongodb+srv://dikshant23:breadjamd23@cluster0.qnc2f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
-# x = mongoengine.connect(host='mongodb+srv://dikshant23:<password>@cluster0.qnc2f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+
 # x = mongoengine.connect('test3')
 
 class Users(Document):
