@@ -6,3 +6,4 @@ flask_restful
 flask_cors
 datetime
 dnspython
+PyJWT==1.7.1
